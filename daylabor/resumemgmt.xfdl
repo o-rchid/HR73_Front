@@ -54,7 +54,6 @@
         <Static id="Static00" taborder="3" text=" 채용 이력서" left="41" top="40" width="219" height="60" onclick="Static00_onclick" font="bold 25px/normal &quot;나눔스퀘어&quot;"/>
         <Button id="Button00" taborder="4" text="조회" left="480" top="110" width="66" height="30" font="15px/normal &quot;나눔스퀘어&quot;" onclick="Button00_onclick"/>
         <Static id="Static01" taborder="5" text="년도" left="237" top="110" width="43" height="30" font="15px/normal &quot;나눔스퀘어&quot;" onclick="Static01_onclick"/>
-        <Button id="Button01" taborder="6" text="test" left="565" top="108" width="85" height="31" onclick="Button01_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[include "Lib::commonOpen.xjs"
@@ -92,7 +91,6 @@ this.fn_callback =function(trID ,ErrorCode ,ErrorMsg)
 this.Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
 {
 	this.gfnOpen("modify", "Base::resumModal.xfdl", "", "");
-	this.alert("test");
 };
 ]]></Script>
     <Objects>
