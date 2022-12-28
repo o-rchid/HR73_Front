@@ -1,0 +1,479 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="empEval" width="1060" height="620" titletext="New Form">
+    <Layouts>
+      <Layout height="620" width="1060">
+        <Div id="Div00_00" taborder="0" text="" left="0" top="5" width="1060" height="610" background="#D9E5FF" formscrolltype="none">
+          <Layouts>
+            <Layout>
+              <Tab id="Tab00" taborder="0" tabindex="0" left="40" top="80" width="410" height="515" onchanged="Div00_00_Tab00_onchanged" border="0px none">
+                <Tabpages>
+                  <Tabpage id="Tabpage1" text="부서명검색" border="0px groove" font="16px/normal &quot;맑은 고딕&quot;">
+                    <Layouts>
+                      <Layout>
+                        <Combo id="Combo00" taborder="0" text="" left="18" top="21" width="192" height="40" innerdataset="innerdataset" datacolumn="datacolumn" codecolumn="codecolumn" font="15px/normal &quot;나눔고딕&quot;" displaynulltext="부서를 선택 해주세요.">
+                          <Dataset id="innerdataset">
+                            <ColumnInfo>
+                              <Column id="codecolumn" size="256"/>
+                              <Column id="datacolumn" size="256"/>
+                            </ColumnInfo>
+                            <Rows>
+                              <Row>
+                                <Col id="codecolumn">전체부서</Col>
+                                <Col id="datacolumn">전체부서</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">회계팀</Col>
+                                <Col id="datacolumn">회계팀</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">인사팀</Col>
+                                <Col id="datacolumn">인사팀</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">전산팀</Col>
+                                <Col id="datacolumn">전산팀</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">보안팀</Col>
+                                <Col id="datacolumn">보안팀</Col>
+                              </Row>
+                            </Rows>
+                          </Dataset>
+                        </Combo>
+                        <Button id="Button00" taborder="1" text="검색" left="224" top="21" width="77" height="40" font="20px/normal &quot;나눔고딕&quot;" onclick="search_btn_onclick"/>
+                        <Grid id="Grid00" taborder="2" left="18" top="73" width="375" height="405" binddataset="ds_empList" scrollbartype="none" oncellclick="deptEmpGrid_oncellclick">
+                          <Formats>
+                            <Format id="default">
+                              <Columns>
+                                <Column size="101"/>
+                                <Column size="87"/>
+                                <Column size="87"/>
+                                <Column size="99"/>
+                              </Columns>
+                              <Rows>
+                                <Row size="24" band="head"/>
+                                <Row size="24"/>
+                              </Rows>
+                              <Band id="head">
+                                <Cell text="사원번호" font="normal 700 15px/normal &quot;Gulim&quot;"/>
+                                <Cell col="1" text="사원명" font="normal 700 15px/normal &quot;Gulim&quot;"/>
+                                <Cell col="2" text="부서" font="normal 700 15px/normal &quot;Gulim&quot;"/>
+                                <Cell col="3" text="직급" font="normal 700 15px/normal &quot;Gulim&quot;"/>
+                              </Band>
+                              <Band id="body">
+                                <Cell text="bind:EMP_CODE"/>
+                                <Cell col="1" text="bind:EMP_NAME"/>
+                                <Cell col="2" text="bind:DEPT_NAME"/>
+                                <Cell col="3" text="bind:POSITION"/>
+                              </Band>
+                            </Format>
+                          </Formats>
+                        </Grid>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                  <Tabpage id="Tabpage2" text="사원명검색" border="0px groove">
+                    <Layouts>
+                      <Layout>
+                        <Button id="Button00" taborder="0" text="검색" left="224" top="21" width="77" height="40" font="20px/normal &quot;나눔고딕&quot;" onclick="searchEmpName_btn_onclick"/>
+                        <Grid id="Grid00" taborder="1" left="18" top="73" width="375" height="405" binddataset="ds_empList" scrollbartype="none">
+                          <Formats>
+                            <Format id="default">
+                              <Columns>
+                                <Column size="91"/>
+                                <Column size="94"/>
+                                <Column size="92"/>
+                                <Column size="97"/>
+                              </Columns>
+                              <Rows>
+                                <Row size="24" band="head"/>
+                                <Row size="24"/>
+                              </Rows>
+                              <Band id="head">
+                                <Cell text="사원번호" font="normal 700 15px/normal &quot;Gulim&quot;"/>
+                                <Cell col="1" text="사원명" font="normal 700 15px/normal &quot;Gulim&quot;"/>
+                                <Cell col="2" text="부서" font="normal 700 15px/normal &quot;Gulim&quot;"/>
+                                <Cell col="3" text="직급" font="normal 700 15px/normal &quot;Gulim&quot;"/>
+                              </Band>
+                              <Band id="body">
+                                <Cell text="bind:EMP_CODE"/>
+                                <Cell col="1" text="bind:EMP_NAME"/>
+                                <Cell col="2" text="bind:DEPT_NAME"/>
+                                <Cell col="3" text="bind:POSITION"/>
+                              </Band>
+                            </Format>
+                          </Formats>
+                        </Grid>
+                        <Edit id="Edit00" taborder="2" left="18" top="21" width="192" height="40" displaynulltext="사원명을 입력하세요."/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                </Tabpages>
+              </Tab>
+              <Tab id="Tab00_00" taborder="1" tabindex="0" left="480" top="40" width="580" height="575" onchanged="Div00_00_Tab00_onchanged" border="0px none">
+                <Tabpages>
+                  <Tabpage id="Tabpage3" text="인사고과등록" border="0px dotted" formscrolltype="none">
+                    <Layouts>
+                      <Layout>
+                        <ImageViewer id="ImageViewer00" taborder="0" text="" left="11" top="25" width="190" height="228"/>
+                        <Static id="Static00" taborder="1" text="사원코드" left="211" top="23" width="75" height="51" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+                        <Edit id="Edit00" taborder="2" left="296" top="19" width="248" height="53" font="18px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static00_00" taborder="3" text="이름" left="211" top="84" width="75" height="51" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+                        <Edit id="Edit00_00" taborder="4" left="298" top="82" width="248" height="53" font="18px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static00_00_00" taborder="5" text="부서" left="211" top="145" width="75" height="51" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+                        <Edit id="Edit00_00_00" taborder="6" left="298" top="145" width="248" height="53" font="18px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static00_00_00_00" taborder="7" text="직급" left="211" top="206" width="75" height="51" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+                        <Edit id="Edit00_00_00_00" taborder="8" left="298" top="208" width="248" height="53" font="18px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static00_01" taborder="9" text="능력(업무지식, 기획창의력 태도)" left="3" top="346" width="259" height="51" textAlign="center" font="18px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Tab00_00_Tabpage3_Static00_01_onclick"/>
+                        <Static id="Static00_01_00" taborder="10" text="업적(업무달성도, 업무개선)" left="3" top="276" width="259" height="51" textAlign="center" font="18px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Tab00_00_Tabpage3_Static00_01_onclick"/>
+                        <Static id="Static00_01_01" taborder="11" text="태도(근무태도, 협동심)" left="3" top="414" width="259" height="51" textAlign="center" font="18px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Tab00_00_Tabpage3_Static00_01_onclick"/>
+                        <Combo id="Combo00" taborder="12" text="" left="280" top="277" width="270" height="50" onitemchanged="Div00_00_Tab00_00_Tabpage3_Combo00_onitemchanged" codecolumn="codecolumn" datacolumn="datacolumn" innerdataset="innerdataset">
+                          <Dataset id="innerdataset">
+                            <ColumnInfo>
+                              <Column id="codecolumn" size="256"/>
+                              <Column id="datacolumn" size="256"/>
+                            </ColumnInfo>
+                            <Rows>
+                              <Row>
+                                <Col id="codecolumn">60</Col>
+                                <Col id="datacolumn">60</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">70</Col>
+                                <Col id="datacolumn">70</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">80</Col>
+                                <Col id="datacolumn">80</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">90</Col>
+                                <Col id="datacolumn">90</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">100</Col>
+                                <Col id="datacolumn">100</Col>
+                              </Row>
+                            </Rows>
+                          </Dataset>
+                        </Combo>
+                        <Combo id="Combo00_00" taborder="13" text="Combo00" left="280" top="347" width="270" height="50" onitemchanged="Div00_00_Tab00_00_Tabpage3_Combo00_00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+                          <Dataset id="innerdataset">
+                            <ColumnInfo>
+                              <Column id="codecolumn" size="256"/>
+                              <Column id="datacolumn" size="256"/>
+                            </ColumnInfo>
+                            <Rows>
+                              <Row>
+                                <Col id="codecolumn">60</Col>
+                                <Col id="datacolumn">60</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">70</Col>
+                                <Col id="datacolumn">70</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">80</Col>
+                                <Col id="datacolumn">80</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">90</Col>
+                                <Col id="datacolumn">90</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">100</Col>
+                                <Col id="datacolumn">100</Col>
+                              </Row>
+                            </Rows>
+                          </Dataset>
+                        </Combo>
+                        <Combo id="Combo00_00_00" taborder="14" text="Combo00" left="280" top="417" width="270" height="50" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+                          <Dataset id="innerdataset">
+                            <ColumnInfo>
+                              <Column id="codecolumn" size="256"/>
+                              <Column id="datacolumn" size="256"/>
+                            </ColumnInfo>
+                            <Rows>
+                              <Row>
+                                <Col id="codecolumn">60</Col>
+                                <Col id="datacolumn">60</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">70</Col>
+                                <Col id="datacolumn">70</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">80</Col>
+                                <Col id="datacolumn">80</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">90</Col>
+                                <Col id="datacolumn">90</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">100</Col>
+                                <Col id="datacolumn">100</Col>
+                              </Row>
+                            </Rows>
+                          </Dataset>
+                        </Combo>
+                        <Button id="Button00" taborder="15" text="등록" left="415" top="480" width="115" height="47" onclick="Div00_00_evalRegistBtn_onclick" font="15pt &quot;Arial&quot;"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                  <Tabpage id="Tabpage4" text="인사고과조회" border="0px dotted">
+                    <Layouts>
+                      <Layout>
+                        <Button id="Button00" taborder="0" text="조회하기" left="8" top="12" width="124" height="50" font="20px/normal &quot;나눔고딕&quot;" onclick="empEvalList_btn_onclick"/>
+                        <Button id="Button00_00" taborder="1" text="삭제하기" left="148" top="12" width="122" height="50" font="20px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Tab00_00_Tabpage4_Button00_00_onclick"/>
+                        <Grid id="Grid00" taborder="2" left="10" top="73" width="550" height="405" binddataset="ds_empEvalList" oncellclick="Div00_00_Tab00_00_Tabpage4_Grid00_oncellclick">
+                          <Formats>
+                            <Format id="default">
+                              <Columns>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="80"/>
+                                <Column size="69"/>
+                              </Columns>
+                              <Rows>
+                                <Row size="24" band="head"/>
+                                <Row size="24"/>
+                              </Rows>
+                              <Band id="head">
+                                <Cell text="사원번호"/>
+                                <Cell col="1" text="사원이름"/>
+                                <Cell col="2" text="적용일"/>
+                                <Cell col="3" text="업적점수"/>
+                                <Cell col="4" text="능력점수"/>
+                                <Cell col="5" text="태도점수"/>
+                                <Cell col="6" text="상태"/>
+                              </Band>
+                              <Band id="body">
+                                <Cell text="bind:EMP_CODE"/>
+                                <Cell col="1" text="bind:EMP_NAME"/>
+                                <Cell col="2" text="bind:APPLY_DAY"/>
+                                <Cell col="3" text="bind:ACHIEVEMENT"/>
+                                <Cell col="4" text="bind:ABILITY"/>
+                                <Cell col="5" text="bind:ATTITUDE"/>
+                                <Cell col="6" text="bind:APPROVAL_STATUS"/>
+                              </Band>
+                            </Format>
+                          </Formats>
+                        </Grid>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                </Tabpages>
+              </Tab>
+              <Static id="Static00" taborder="2" text="    인사고과등록" left="6" top="6" width="188" height="49" textAlign="left" font="18px/normal &quot;나눔고딕&quot;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_empEval">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="APPLY_DAY" type="STRING" size="256"/>
+          <Column id="DEPT_CODE" type="STRING" size="256"/>
+          <Column id="POSITION_CODE" type="STRING" size="256"/>
+          <Column id="ACHIEVEMENT" type="INT" size="256"/>
+          <Column id="ABILITY" type="INT" size="256"/>
+          <Column id="ATTITUDE" type="INT" size="256"/>
+          <Column id="APPROVAL_STATUS" type="STRING" size="256"/>
+          <Column id="GRADE" type="STRING" size="256"/>
+          <Column id="STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_empList">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="DEPT_NAME" type="STRING" size="256"/>
+          <Column id="POSITION" type="STRING" size="256"/>
+          <Column id="GENDER" type="STRING" size="256"/>
+          <Column id="MOBILE_NUMBER" type="STRING" size="256"/>
+          <Column id="EMAIL" type="STRING" size="256"/>
+          <Column id="ADDRESS" type="STRING" size="256"/>
+          <Column id="LAST_SCHOOL" type="STRING" size="256"/>
+          <Column id="IMG_EXTEND" type="STRING" size="256"/>
+          <Column id="BIRTHDATE" type="STRING" size="256"/>
+          <Column id="DETAIL_ADDRESS" type="STRING" size="256"/>
+          <Column id="POST_NUMBER" type="STRING" size="256"/>
+          <Column id="STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_empEvalList">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="APPLY_DAY" type="STRING" size="256"/>
+          <Column id="DEPT_CODE" type="STRING" size="256"/>
+          <Column id="POSITION_CODE" type="STRING" size="256"/>
+          <Column id="ACHIEVEMENT" type="INT" size="256"/>
+          <Column id="ABILITY" type="INT" size="256"/>
+          <Column id="ATTITUDE" type="INT" size="256"/>
+          <Column id="APPROVAL_STATUS" type="STRING" size="256"/>
+          <Column id="GRADE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div00_00.form.Tab00_00.Tabpage3.form.Edit00" propid="value" datasetid="ds_empList" columnid="EMP_CODE"/>
+      <BindItem id="item1" compid="Div00_00.form.Tab00_00.Tabpage3.form.Edit00_00" propid="value" datasetid="ds_empList" columnid="EMP_NAME"/>
+      <BindItem id="item2" compid="Div00_00.form.Tab00_00.Tabpage3.form.Edit00_00_00" propid="value" datasetid="ds_empList" columnid="DEPT_NAME"/>
+      <BindItem id="item3" compid="Div00_00.form.Tab00_00.Tabpage3.form.Edit00_00_00_00" propid="value" datasetid="ds_empList" columnid="POSITION"/>
+      <BindItem id="item4" compid="Div00_00.form.Tab00_00.Tabpage3.form.Combo00_00" propid="value" datasetid="ds_empEval" columnid="ABILITY"/>
+      <BindItem id="item5" compid="Div00_00.form.Tab00_00.Tabpage3.form.Combo00_00_00" propid="value" datasetid="ds_empEval" columnid="ATTITUDE"/>
+      <BindItem id="item7" compid="Div00_00.form.Tab00_00.Tabpage3.form.Combo00" propid="value" datasetid="ds_empEval" columnid="ACHIEVEMENT"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[include "Lib::commDate.xjs";
+include "Lib::commString.xjs";
+include "Lib::commonOpen.xjs";
+
+var approvalStatus;
+var deleteEmp
+
+this.search_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+if(this.Div00_00.form.Tab00.Tabpage1.form.Combo00.value==null){
+	this.alert("조회할 부서를 선택해주세요.");
+	return;
+	}else{
+		this.transaction("searcDeptID",
+						 "svcEmpinfomgmt::emplist",
+						 "",
+						 "ds_empList=gds_emp",
+						 "value='"+this.Div00_00.form.Tab00.Tabpage1.form.Combo00.value+"'",
+						 "fn_callback");	
+	}
+};
+
+this.searchEmpName_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+if(this.Div00_00.form.Tab00.Tabpage2.form.Edit00.value==null){
+	this.alert("검색할 사원명을 입력해주세요.");
+	return;
+	}else{
+		this.transaction("searEmpID",
+						 "svcEmpinfomgmt::emplist",
+						 "",
+						 "ds_empList=gds_emp",
+						 "value='"+this.Div00_00.form.Tab00.Tabpage2.form.Edit00.value+"'",
+						 "fn_callback");	
+	}	
+};
+
+
+
+
+
+
+
+
+this.deptEmpGrid_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+this.transaction("searceCodeID",
+				 "svcEmpinfomgmt::empdetail/all",
+				 "",
+				 "ds_empEval=gds_emp",
+				 "empCode='"+this.ds_empList.getColumn(this.ds_empList.rowposition,"EMP_CODE")+"'",
+				 "fn_callback",false);	
+
+			approvalStatus=this.ds_empEval.getColumn(0,"APPROVAL_STATUS");
+
+			this.Div00_00.form.Tab00_00.Tabpage3.form.ImageViewer00.set_image("URL('http://localhost/profile/"+this.ds_empList.getColumn(this.ds_empList.rowposition,"EMP_CODE")+".jpg')"); 
+			this.Div00_00.form.Tab00_00.Tabpage3.form.ImageViewer00.set_stretch("fit");
+			if(!(this.ds_empEval.getColumn(0,"ACHIEVEMENT")==null))
+				approvalStatus="승인대기"
+};
+
+this.empEvalList_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+		this.transaction("empEvalList",
+						 "svcEmpinfomgmt::evaluation",
+						 "",
+						 "ds_empEvalList=gds_empEval",
+						 "",
+						 "fn_callback");	
+};
+
+
+this.fn_callback =function(trID ,ErrorCode ,ErrorMsg)
+{
+if(trID=="searcDeptID"){
+			var empCode = this.ds_empList.getColumn(this.ds_empList.rowposition,"EMP_CODE");
+			trace(empCode+"@@");
+			this.Div00_00.form.Tab00_00.Tabpage3.form.ImageViewer00.set_image("URL('http://localhost/profile/"+empCode+".jpg')");
+			this.Div00_00.form.Tab00_00.Tabpage3.form.ImageViewer00.set_stretch("fit");
+		if(ErrorCode!=0){
+			alert("부서명 검색 실패 : "+ErrorMsg);
+		}
+	}
+if(trID=="searEmpID"){
+		if(ErrorCode!=0){
+			alert("사원명 검색 실패 : "+ErrorMsg);
+		}if(this.ds_empList.getColumn(0,"EMP_NAME")==undefined){
+			alert("  "+this.Tab1.page2.form.searchEmpName.value+" 사원은 존재하지않습니다. ");
+		}
+	}
+if(trID=="searceCodeID"){
+		if(ErrorCode!=0){
+			alert("상세정보 조회 실패 : "+ErrorMsg);
+		}else{
+			//this.Tab2.page1.form.ImageViewer.set_image("URL('http://localhost/"+this.ds_empList.getColumn(this.ds_empList.rowposition,"EMP_CODE")+")");   
+			}
+	}
+}
+
+this.Div00_00_evalRegistBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{			
+			if(approvalStatus=="승인대기"){
+				this.alert("승인대기상태입니다.");
+				}else{
+			if(this.ds_empEval.getColumn(0,"ACHIEVEMENT")==null || this.ds_empEval.getColumn(0,"ABILITY")==null || this.ds_empEval.getColumn(0,"ATTITUDE")==null){
+				this.alert("인사고과 점수를 모두 입력해주세요.");
+				}else{
+			this.ds_empEval.addColumn("APPROVAL_STATUS","string",256);
+			this.ds_empEval.setColumn(0,"APPROVAL_STATUS","승인대기");
+			trace(this.ds_empEval.getColumn(0,"APPROVAL_STATUS"));
+			this.transaction("registerEval",
+						     "svcEmpinfomgmt::registevaluation",
+						     "gds_empEval=ds_empEval",
+							 "",
+							 "",
+							 "fn_callback");	
+					}
+		}
+};
+
+this.Div00_00_Tab00_00_Tabpage4_Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	deleteEmp = this.Div00_00.form.Tab00_00.Tabpage4.form.Grid00.getCellValue(e.row,0);
+	trace(deleteEmp);
+
+};
+
+this.Div00_00_Tab00_00_Tabpage4_Button00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+	{
+	if(deleteEmp==null){
+		this.alert("사원을 선택해주세요.")
+		}else{
+			this.transaction("deleteEmpEval",
+							 "svcEmpinfomgmt::removalevaluation",
+							 "",
+							 "",
+							 "empCode="+deleteEmp+" applyDay="+this.gfn_getYear(this.gfn_today()),
+							 "fn_callback",false);	
+			this.ds_empEvalList.deleteRow(this.ds_empEvalList.findRow("EMP_CODE",deleteEmp));
+		}
+};
+]]></Script>
+  </Form>
+</FDL>

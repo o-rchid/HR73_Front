@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="dailyAttnd" width="1060" height="620" titletext="dailyAttnd" onload="dailyAttnd_onload" oninit="dailyAttnd_oninit" ontimer="dailyAttnd_ontimer">
+    <Layouts>
+      <Layout height="620" width="1060">
+        <Div id="Div00_00" taborder="0" text="" left="18" top="25" width="1025" height="570" background="#D9E5FF">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="1" text="◼일근태 등록" left="8" top="0" width="214" height="49" textAlign="left" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Div id="Div00" taborder="1" left="38" top="68" width="457" height="462" background="#e5edff" text="">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static00" taborder="1" text="일근태기록" left="79" top="19" width="298" height="55" font="28px/normal &quot;나눔고딕&quot;" textAlign="center"/>
+                    <Static id="Static00_00" taborder="0" text="적용일자" left="42" top="151" width="109" height="40" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+                    <Static id="Static00_00_00" taborder="2" text="근태구분" left="42" top="206" width="109" height="40" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+                    <Edit id="attndEdit" taborder="3" left="158" top="204" width="259" height="40" font="18px/normal &quot;나눔고딕&quot;" oneditclick="attndEdit_oneditclick" onchanged="Div00_00_Div00_attndEdit_onchanged"/>
+                    <Static id="Static00_00_00_00" taborder="4" text="시간" left="42" top="261" width="109" height="40" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+                    <Button id="recordBtn" taborder="5" text="기록하기" left="80" top="331" width="296" height="40" font="20px/normal &quot;나눔고딕&quot;" onclick="recordBtn_onclick"/>
+                    <Button id="timeRecBtn" taborder="6" text="현시각기록" left="80" top="392" width="296" height="40" font="20px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Div00_timeRecBtn_onclick"/>
+                    <Calendar id="dateCal" taborder="7" left="158" top="149" width="259" height="40" onchanged="dateCal_onchanged"/>
+                    <Static id="timer" taborder="8" text="Static01" left="108" top="78" width="253" height="36" textAlign="center" font="16px/normal &quot;Gulim&quot;" onclick="Div00_00_Div00_timer_onclick"/>
+                    <MaskEdit id="time" taborder="9" left="158" top="261" width="259" height="40" format="##:##" type="string"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div00_00" taborder="2" left="517" top="68" width="463" height="462" background="#e5edff">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static00" taborder="0" text="일근태조회" left="82" top="19" width="298" height="55" font="28px/normal &quot;나눔고딕&quot;" textAlign="center"/>
+                    <Button id="deleteBtn" taborder="1" text="삭제하기" left="83" top="94" width="296" height="40" font="20px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Div00_00_deleteBtn_onclick"/>
+                    <Grid id="attndGrid" taborder="2" left="46" top="150" width="387" height="297" binddataset="ds_dayAttdList">
+                      <Formats>
+                        <Format id="default">
+                          <Columns>
+                            <Column size="129"/>
+                            <Column size="129"/>
+                            <Column size="129"/>
+                          </Columns>
+                          <Rows>
+                            <Row size="24" band="head"/>
+                            <Row size="24"/>
+                          </Rows>
+                          <Band id="head">
+                            <Cell text="적용일"/>
+                            <Cell col="1" text="근태구분명"/>
+                            <Cell col="2" text="시각"/>
+                          </Band>
+                          <Band id="body">
+                            <Cell text="bind:APPLY_DAY"/>
+                            <Cell col="1" text="bind:ATTD_TYPE_NAME"/>
+                            <Cell col="2" text="bind:TIME"/>
+                          </Band>
+                        </Format>
+                      </Formats>
+                    </Grid>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[include "Lib::commDate.xjs";
+include "Lib::commString.xjs";
+include "Lib::commonOpen.xjs";
+
+var updateEdit
+var hh
+var mm
+var ss
+var nexa=nexacro.getApplication();
+
+this.dailyAttnd_oninit = function(obj:nexacro.Form,e:nexacro.EventInfo)
+{
+	this.clock();
+	this.setTimer(1,1000);
+};
+
+this.dailyAttnd_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
+{
+	if(e.timerid == 1){
+		this.clock();
+	}
+};
+
+
+this.clock = function()
+{
+	var objDate = new nexacro.Date();
+	hh = objDate.getHours()>=10?objDate.getHours():'0'+objDate.getHours();
+	mm = objDate.getMinutes()>=10?objDate.getMinutes():'0'+objDate.getMinutes();
+	ss = objDate.getSeconds()>=10?objDate.getSeconds():'0'+objDate.getSeconds();
+	var time = hh+":"+mm+":"+ss;
+	this.Div00_00.form.Div00.form.timer.set_text(time);
+};
+
+this.attndEdit_oneditclick = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+   updateEdit = obj;
+   this.gfnOpen("근태구분", "Base::Modal.xfdl", "callback", {code:"CO-09"});
+}
+
+this.callback = function(codename, code)
+{  
+	this.ds_dayAttd.setColumn(0,"ATTD_TYPE_CODE",code.split(" ")[1]); //근태코드set
+	this.ds_dayAttd.setColumn(0,"ATTD_TYPE_NAME",code.split(" ")[0]); //근태코드set
+	this.ds_dayAttd.setColumn(0,"EMP_CODE",nexa.g_empCode);
+   updateEdit.set_value(code.split(" ")[0]);
+}
+
+this.dateCal_onchanged = function(obj:nexacro.Calendar,e:nexacro.ChangeEventInfo)
+{
+			this.dateCal();
+};
+this.dateCal = function(){
+			this.transaction("findDayAttdList",
+							 "svcAttdmgmt::daily-attnd2",
+							 "",
+							 "ds_dayAttdList=gds_dayAttd",
+							 "applyDay='"+this.Div00_00.form.Div00.form.dateCal.value+"' empCode='"+nexa.g_empCode+"'",
+							 "fn_callback" );	
+							 trace("dateCal실행");
+}
+
+this.recordBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var count=this.ds_dayAttdList.rowcount;
+	for(var i=0;i<count;i++){
+		var searchDeptList=this.ds_dayAttdList.getColumn(i,"ATTD_TYPE_CODE");
+		trace(searchDeptList);
+	if(this.Div00_00.form.Div00.form.attndEdit.value=="퇴근" && searchDeptList=='ADC002'){
+		this.alert("이미 퇴근처리되었습니다.");
+		return
+	}if(this.Div00_00.form.Div00.form.attndEdit.value=="출근" && searchDeptList=='ADC001'){
+		this.alert("이미 출근처리되었습니다.");
+		return
+	}if(this.Div00_00.form.Div00.form.time.value<1800 && this.Div00_00.form.Div00.form.attndEdit.value=="퇴근"){
+		this.alert("퇴근시간을 확인해주세요.");
+		return
+	}
+}
+	if(this.Div00_00.form.Div00.form.attndEdit.value=="퇴근" && searchDeptList==null){
+		this.alert("먼저 출근처리해주세요.");
+		return
+	}if(this.Div00_00.form.Div00.form.attndEdit.value=="외출" && searchDeptList==null){
+		this.alert("먼저 출근처리해주세요.");
+		return
+	}
+   this.transaction(
+               "recordAttnd"
+               ,"svcAttdmgmt::daily-attnd"
+               ,"gds_dayAttd=ds_dayAttd"
+               ,""
+               ,""
+               ,"fn_callback"
+   );
+};
+
+this.fn_callback = function (trID, errorCode, errorMsg)
+{
+		if(trID == "recordAttnd"){
+		if(errorCode < 0){
+		 this.alert("근태등록 실패 : "+ errorMsg );
+			return
+			}
+			this.alert("등록 성공");
+			this.dateCal();
+		}
+		if(trID == "deleteAttnd"){
+		if(errorCode < 0){
+			return this.alert("근태삭제 실패 : "+ errorMsg );
+			}
+			this.alert("삭제 성공");
+			this.dateCal();
+		}
+
+}
+
+this.Div00_00_Div00_timeRecBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.Div00_00.form.Div00.form.time.set_value(hh.toString()+mm.toString()); 
+};
+
+
+
+
+this.Div00_00_Div00_00_deleteBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	   var row = this.Div00_00.form.Div00_00.form.attndGrid.getDatasetRow(e.row);
+	   var nColIdx = 0
+	   while(nColIdx<7){
+		this.ds_delDayAttd.setColumn(0,this.ds_dayAttdList.getColID(nColIdx),this.ds_dayAttdList.getColumn(e.row,nColIdx));
+		nColIdx++
+		}
+
+	   this.transaction(
+               "deleteAttnd"
+               ,"svcAttdmgmt::daily-attnd3"
+               ,"gds_dayAttd=ds_delDayAttd"
+               ,""
+               ,""
+               ,"fn_callback"
+   );
+};
+
+
+]]></Script>
+    <Objects>
+      <Dataset id="ds_dayAttd">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="ATTD_TYPE_CODE" type="STRING" size="256"/>
+          <Column id="APPLY_DAY" type="STRING" size="256"/>
+          <Column id="ATTD_TYPE_NAME" type="STRING" size="256"/>
+          <Column id="TIME" type="STRING" size="256"/>
+          <Column id="DAY_ATTD_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_dayAttdList">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="ATTD_TYPE_CODE" type="STRING" size="256"/>
+          <Column id="APPLY_DAY" type="STRING" size="256"/>
+          <Column id="ATTD_TYPE_NAME" type="STRING" size="256"/>
+          <Column id="TIME" type="STRING" size="256"/>
+          <Column id="DAY_ATTD_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_delDayAttd">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="ATTD_TYPE_CODE" type="STRING" size="256"/>
+          <Column id="APPLY_DAY" type="STRING" size="256"/>
+          <Column id="ATTD_TYPE_NAME" type="STRING" size="256"/>
+          <Column id="TIME" type="STRING" size="256"/>
+          <Column id="DAY_ATTD_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item1" compid="Div00_00.form.Div00.form.dateCal" propid="value" datasetid="ds_dayAttd" columnid="APPLY_DAY"/>
+      <BindItem id="item2" compid="Div00_00.form.Div00.form.attndEdit" propid="value" datasetid="ds_dayAttd" columnid="ATTD_TYPE_NAME"/>
+      <BindItem id="item3" compid="Div00_00.form.Div00.form.time" propid="value" datasetid="ds_dayAttd" columnid="TIME"/>
+    </Bind>
+  </Form>
+</FDL>

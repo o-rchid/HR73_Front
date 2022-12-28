@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="empEvalApproval" width="1060" height="620" titletext="New Form">
+    <Layouts>
+      <Layout height="620" mobileorientation="landscape" width="1060">
+        <Div id="Div00_00" taborder="0" text="" left="0" top="0" width="1060" height="610" background="#D9E5FF">
+          <Layouts>
+            <Layout>
+              <Static id="Static00_01_00_00_00" taborder="0" text="조회부서" left="70" top="55" width="100" height="50" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Static id="Static00_01_00_00_00_00" taborder="1" text="조회일자" left="340" top="55" width="100" height="50" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Combo id="year" taborder="2" text="Combo00" left="450" top="55" width="150" height="50" font="20px/normal &quot;나눔고딕&quot;" onitemchanged="Div00_00_Combo00_onitemchanged" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">2020</Col>
+                      <Col id="datacolumn">2020</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">2021</Col>
+                      <Col id="datacolumn">2021</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">2022</Col>
+                      <Col id="datacolumn">2022</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+              <Button id="Button00" taborder="3" text="조회하기" left="646" top="55" width="150" height="50" font="20px/normal &quot;나눔고딕&quot;" onclick="search_btn_onclick"/>
+              <Button id="excel" taborder="4" text="엑셀 출력하기" left="826" top="55" width="150" height="50" font="20px/normal &quot;나눔고딕&quot;" onclick="Div00_00_excel_onclick"/>
+              <Button id="Button02" taborder="5" text="승인" left="275" top="120" height="50" width="100" font="20px/normal &quot;나눔고딕&quot;" onclick="approvalBtn"/>
+              <Button id="approvalCancle" taborder="6" text="승인취소" left="405" top="120" height="50" width="100" font="20px/normal &quot;나눔고딕&quot;" onclick="Div00_00_approvalCancle_onclick"/>
+              <Button id="returnBtn" taborder="7" text="반려" left="535" top="120" height="50" width="100" font="20px/normal &quot;나눔고딕&quot;" onclick="Div00_00_returnBtn_onclick"/>
+              <Button id="confirmBtn" taborder="8" text="확정" left="665" top="120" height="50" width="100" font="20px/normal &quot;나눔고딕&quot;" onclick="Div00_00_confirmBtn_onclick"/>
+              <Grid id="evalGrid" taborder="9" left="15" top="185" width="1030" height="415" binddataset="ds_empEvalList" oncellclick="Div00_00_evalGrid_oncellclick">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="103"/>
+                      <Column size="103"/>
+                      <Column size="103"/>
+                      <Column size="103"/>
+                      <Column size="103"/>
+                      <Column size="103"/>
+                      <Column size="103"/>
+                      <Column size="103"/>
+                      <Column size="103"/>
+                      <Column size="103"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="사원번호"/>
+                      <Cell col="1" text="사원명"/>
+                      <Cell col="2" text="등록일"/>
+                      <Cell col="3" text="부서"/>
+                      <Cell col="4" text="직급"/>
+                      <Cell col="5" text="업적점수"/>
+                      <Cell col="6" text="능력점수"/>
+                      <Cell col="7" text="태도점수"/>
+                      <Cell col="8" text="승인여부"/>
+                      <Cell col="9" text="평가등급"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:EMP_CODE"/>
+                      <Cell col="1" text="bind:EMP_NAME"/>
+                      <Cell col="2" text="bind:APPLY_DAY"/>
+                      <Cell col="3" text="bind:DEPT_NAME"/>
+                      <Cell col="4" text="bind:POSITION"/>
+                      <Cell col="5" text="bind:ACHIEVEMENT"/>
+                      <Cell col="6" text="bind:ABILITY"/>
+                      <Cell col="7" text="bind:ATTITUDE"/>
+                      <Cell col="8" text="bind:APPROVAL_STATUS"/>
+                      <Cell col="9" text="bind:GRADE"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Static id="Static00" taborder="10" text="   인사고과관리" left="6" top="6" width="188" height="49" textAlign="left" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Combo id="dept" taborder="11" text="" left="180" top="55" width="150" height="50" font="20px/normal &quot;나눔고딕&quot;" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">모든부서</Col>
+                      <Col id="datacolumn">모든부서</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">회계팀</Col>
+                      <Col id="datacolumn">회계팀</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">인사팀</Col>
+                      <Col id="datacolumn">인사팀</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">전산팀</Col>
+                      <Col id="datacolumn">전산팀</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">보안팀</Col>
+                      <Col id="datacolumn">보안팀</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_empEvalList">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="APPLY_DAY" type="STRING" size="256"/>
+          <Column id="DEPT_NAME" type="STRING" size="256"/>
+          <Column id="POSITION" type="STRING" size="256"/>
+          <Column id="ACHIEVEMENT" type="INT" size="256"/>
+          <Column id="ABILITY" type="INT" size="256"/>
+          <Column id="ATTITUDE" type="INT" size="256"/>
+          <Column id="APPROVAL_STATUS" type="STRING" size="256"/>
+          <Column id="GRADE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="gds_empEval">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="APPLY_DAY" type="STRING" size="256"/>
+          <Column id="DEPT_NAME" type="STRING" size="256"/>
+          <Column id="POSITION" type="STRING" size="256"/>
+          <Column id="ACHIEVEMENT" type="INT" size="256"/>
+          <Column id="ABILITY" type="INT" size="256"/>
+          <Column id="ATTITUDE" type="INT" size="256"/>
+          <Column id="APPROVAL_STATUS" type="STRING" size="256"/>
+          <Column id="GRADE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <ExcelExportObject id="exportObj"/>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[include "Lib::commonOpen.xjs";
+
+var row;
+
+this.search_btn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+		if(this.Div00_00.form.dept.value==null){
+			this.alert("조회부서명을 선택해주세요");
+		}else{ 
+			if(this.Div00_00.form.year.value==null){
+			this.alert("조회일자를 선택해주세요");
+			}else{
+			this.transaction("searcEvalID",
+						 "svcEmpinfomgmt::evaluation-approval",
+						 "",
+						 "ds_empEvalList=gds_empEval",
+						 "deptName="+this.Div00_00.form.dept.value+" year="+this.Div00_00.form.year.value ,
+						 "fn_callback");
+			}
+		}
+		
+		
+	this.fn_callback = function(trID ,ErrorCode ,ErrorMsg)
+		{
+		if(trID=="searcEvalID"){
+			if(ErrorCode!=0){
+				alert("인사고과 조회 실패 : "+ErrorMsg);
+			}
+		}
+	}
+};
+
+
+this.approvalBtn = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(row==null){
+		this.alert("승인할 재직증명서 항목을 선택해주세요.")
+	}else
+	this.ds_empEvalList.setColumn(row,"APPROVAL_STATUS","승인");
+};
+
+this.Div00_00_evalGrid_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	row = this.Div00_00.form.evalGrid.getDatasetRow(e.row);
+	trace(row);
+	
+};
+
+this.Div00_00_approvalCancle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(row==null){
+		this.alert("승인할 재직증명서 항목을 선택해주세요.")
+
+	}else{
+			if(!(this.ds_empEvalList.getColumn(row,"APPROVAL_STATUS")=="승인"))
+				this.alert("승인상태인 재직증명서만 취소할 수 있습니다.")
+				else
+	this.ds_empEvalList.setColumn(row,"APPROVAL_STATUS","승인취소");
+	}
+};
+
+this.Div00_00_returnBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(row==null){
+		this.alert("반려할 재직증명서 항목을 선택해주세요.")
+
+	}else{
+			if(!(this.ds_empEvalList.getColumn(row,"APPROVAL_STATUS")=="승인대기"))
+				this.alert("승인대기상태인 재직증명서만 반려할 수 있습니다.")
+				else
+	this.ds_empEvalList.setColumn(row,"APPROVAL_STATUS","반려");
+	}
+};
+
+this.Div00_00_confirmBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	this.gds_empEval=this.ds_empEvalList;
+	this.gds_empEval.getColumn(0,"ABILITY");
+	trace(this.ds_empEvalList.getColumn(1,"ATTITUDE"));
+	if(this.confirm("변경사항을 확정하시겠습니까?")){
+	this.transaction(	 "evalConfirm",
+						 "svcEmpinfomgmt::evaluation-approval2",
+						 "gds_empEval=ds_empEvalList",
+						 "",
+						 "",
+						 "fn_callback");	
+			}
+	
+};
+
+this.Div00_00_excel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.exportObj = new ExcelExportObject("Export00", this);
+	
+	this.exportObj.set_exportfilename("ExcelExportFile");
+	this.exportObj.set_exporturl("http://localhost:8881/XExportImport");
+	
+	this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Div00_00.form.evalGrid,"Sheet1!A1" );
+	this.exportObj.set_exporttype(nexacro.ExportTypes.EXCEL2007);
+
+	this.exportObj.exportData();
+};]]></Script>
+  </Form>
+</FDL>

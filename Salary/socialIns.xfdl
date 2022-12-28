@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sociallns" width="1060" height="610" titletext="New Form" onload="sociallns_onload">
+    <Layouts>
+      <Layout height="610" width="1060">
+        <Div id="Div00_00" taborder="0" text="" left="25" top="25" width="1010" height="560" background="#D9E5FF">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="1" text="◼사회보험환경등록" left="8" top="0" width="214" height="49" textAlign="left" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Div id="Div00" taborder="0" left="27" top="53" width="946" height="72" background="#ffffff">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static00" taborder="0" text="귀속연도" left="43" top="3" width="120" height="60" font="24px/normal &quot;나눔고딕&quot;" textAlign="center"/>
+                    <Static id="Static00_00" taborder="1" text="년" left="343" top="3" width="120" height="60" font="24px/normal &quot;나눔고딕&quot;"/>
+                    <Combo id="year" taborder="2" left="165" top="6" width="162" height="58" font="20px/normal &quot;나눔고딕&quot;" onitemchanged="Div00_00_Div00_Combo00_onitemchanged"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Tab id="Tab00" taborder="2" tabindex="0" left="40" top="135" width="923" height="390" onchanged="Div00_00_Tab00_onchanged">
+                <Tabpages>
+                  <Tabpage id="Tabpage1" text="건강보험">
+                    <Layouts>
+                      <Layout>
+                        <Static id="Static00" taborder="0" text="✔건강보험" left="65" top="21" width="220" height="60" font="36px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static01" taborder="1" text="건강보험부담율" left="105" top="98" width="210" height="60" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static01_00" taborder="2" text="장기요양보험율" left="105" top="171" width="210" height="60" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Edit id="Edit00" taborder="3" left="325" top="101" width="102" height="60" font="20px/normal &quot;나눔고딕&quot;" textAlign="center"/>
+                        <Edit id="Edit00_00" taborder="4" left="325" top="171" width="102" height="60" font="20px/normal &quot;나눔고딕&quot;" textAlign="center" enable="true"/>
+                        <Static id="Static01_01" taborder="5" text="%" left="435" top="98" width="210" height="60" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static01_01_00" taborder="6" text="%" left="437" top="168" width="210" height="60" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Button id="Button00" taborder="7" text="갱신" left="563" top="318" width="130" height="40" font="28px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Tab00_Tabpage3_Button00_onclick"/>
+                        <Button id="Button00_00" taborder="8" text="삭제" left="723" top="318" width="130" height="40" font="28px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Tab00_Tabpage4_Button00_00_onclick"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                  <Tabpage id="Tabpage2" text="국민연금">
+                    <Layouts>
+                      <Layout>
+                        <Static id="Static00" taborder="0" text="✔국민연금" left="65" top="21" width="220" height="60" font="36px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static01" taborder="1" text="국민연금 개인부담율" left="105" top="98" width="290" height="60" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Edit id="Edit00" taborder="2" left="415" top="101" width="102" height="60"/>
+                        <Static id="Static01_01" taborder="3" text="%" left="525" top="98" width="210" height="60" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static01_00" taborder="4" text="국민연금 사업자부담율" left="105" top="171" width="290" height="60" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Edit id="Edit00_00" taborder="5" left="415" top="171" width="102" height="60"/>
+                        <Static id="Static01_01_00" taborder="6" text="%" left="527" top="168" width="210" height="60" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Button id="Button00" taborder="7" text="갱신" left="563" top="318" width="130" height="40" font="28px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Tab00_Tabpage3_Button00_onclick"/>
+                        <Button id="Button00_00" taborder="8" text="삭제" left="723" top="318" width="130" height="40" font="28px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Tab00_Tabpage4_Button00_00_onclick"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                  <Tabpage id="Tabpage3" text="고용보험">
+                    <Layouts>
+                      <Layout>
+                        <Static id="Static00" taborder="0" text="✔고용보험" left="65" top="21" width="220" height="60" font="36px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static01" taborder="1" text="고용안전사업 사업자부담분율" left="15" top="215" width="431" height="40" font="26px/normal &quot;나눔고딕&quot;" textAlign="right"/>
+                        <Edit id="Edit00" taborder="2" left="456" top="218" width="102" height="40"/>
+                        <Static id="Static01_01" taborder="3" text="%" left="566" top="215" width="210" height="40" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static01_00" taborder="4" text="직업능력개발사업 사업자부담분율" left="15" top="260" width="431" height="40" font="26px/normal &quot;나눔고딕&quot;" textAlign="right"/>
+                        <Edit id="Edit00_00" taborder="5" left="456" top="263" width="102" height="40"/>
+                        <Static id="Static01_01_00" taborder="6" text="%" left="568" top="260" width="210" height="40" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Button id="Button00" taborder="7" text="갱신" left="563" top="318" width="130" height="40" font="28px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Tab00_Tabpage3_Button00_onclick"/>
+                        <Button id="Button00_00" taborder="8" text="삭제" left="723" top="318" width="130" height="40" font="28px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Tab00_Tabpage4_Button00_00_onclick"/>
+                        <Static id="Static01_02" taborder="9" text="고용보험율" left="15" top="126" width="431" height="40" font="26px/normal &quot;나눔고딕&quot;" textAlign="right"/>
+                        <Edit id="Edit00_01" taborder="10" left="456" top="128" width="102" height="40"/>
+                        <Static id="Static01_01_01" taborder="11" text="%" left="566" top="126" width="210" height="40" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static01_00_00" taborder="12" text="실업급여 사업자부담분율" left="15" top="170" width="431" height="40" font="26px/normal &quot;나눔고딕&quot;" textAlign="right"/>
+                        <Edit id="Edit00_00_00" taborder="13" left="456" top="173" width="102" height="40"/>
+                        <Static id="Static01_01_00_00" taborder="14" text="%" left="568" top="170" width="210" height="40" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static01_02_00" taborder="15" text="고용보험 공제방식" left="120" top="78" width="226" height="40" font="26px/normal &quot;나눔고딕&quot;" textAlign="right"/>
+                        <Combo id="Combo00" taborder="16" left="356" top="78" width="150" height="40" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+                          <Dataset id="innerdataset">
+                            <ColumnInfo>
+                              <Column id="codecolumn" size="256"/>
+                              <Column id="datacolumn" size="256"/>
+                            </ColumnInfo>
+                            <Rows>
+                              <Row>
+                                <Col id="codecolumn">1.임금총액방식</Col>
+                                <Col id="datacolumn">1.임금총액방식</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">2.보수총액방식</Col>
+                                <Col id="datacolumn">2.보수총액방식</Col>
+                              </Row>
+                              <Row>
+                                <Col id="codecolumn">3.과세총액방식</Col>
+                                <Col id="datacolumn">3.과세총액방식</Col>
+                              </Row>
+                            </Rows>
+                          </Dataset>
+                        </Combo>
+                        <Static id="Static01_02_00_00" taborder="17" text="공제구분" left="516" top="79" width="108" height="40" font="26px/normal &quot;나눔고딕&quot;" textAlign="right"/>
+                        <Combo id="Combo00_00" taborder="18" left="634" top="79" width="150" height="40"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                  <Tabpage id="Tabpage4" text="산재보험">
+                    <Layouts>
+                      <Layout>
+                        <Static id="Static00" taborder="0" text="✔산재보험" left="65" top="21" width="220" height="60" font="36px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static01" taborder="1" text="산재보험율" left="105" top="98" width="220" height="60" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Edit id="Edit00" taborder="2" left="315" top="101" width="102" height="60"/>
+                        <Static id="Static01_01" taborder="3" text="%" left="425" top="98" width="210" height="60" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Static id="Static01_00" taborder="4" text="출퇴근재해요율" left="105" top="171" width="220" height="60" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Edit id="Edit00_00" taborder="5" left="315" top="171" width="102" height="60"/>
+                        <Static id="Static01_01_00" taborder="6" text="%" left="427" top="168" width="210" height="60" font="28px/normal &quot;나눔고딕&quot;"/>
+                        <Button id="Button00" taborder="7" text="갱신" left="563" top="318" width="130" height="40" font="28px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Tab00_Tabpage3_Button00_onclick"/>
+                        <Button id="Button00_00" taborder="8" text="삭제" left="723" top="318" width="130" height="40" font="28px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Tab00_Tabpage4_Button00_00_onclick"/>
+                      </Layout>
+                    </Layouts>
+                  </Tabpage>
+                </Tabpages>
+              </Tab>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_socialIns">
+        <ColumnInfo>
+          <Column id="ATTRIBUTION_YEAR" type="STRING" size="256"/>
+          <Column id="HEALTH_INSURE_RATES" type="STRING" size="256"/>
+          <Column id="LONG_TERM_CARE_RATE" type="STRING" size="256"/>
+          <Column id="NATION_PENISION_RATES" type="STRING" size="256"/>
+          <Column id="TEACH_PENISION_RATES" type="STRING" size="256"/>
+          <Column id="EMP_INSURE_RATES" type="STRING" size="256"/>
+          <Column id="WRK_INSURE_RATES" type="STRING" size="256"/>
+          <Column id="JOBSTABIL_RATES" type="STRING" size="256"/>
+          <Column id="VOCA_COMPETENCY_RATES" type="STRING" size="256"/>
+          <Column id="INDUST_INSURE_RATES" type="STRING" size="256"/>
+          <Column id="INDUST_INSURE_CHAR_RATES" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="NATION_PENISION_RATES"/>
+            <Col id="TEACH_PENISION_RATES"/>
+            <Col id="EMP_INSURE_RATES"/>
+            <Col id="WRK_INSURE_RATES"/>
+            <Col id="JOBSTABIL_RATES"/>
+            <Col id="VOCA_COMPETENCY_RATES"/>
+            <Col id="INDUST_INSURE_RATES"/>
+            <Col id="INDUST_INSURE_CHAR_RATES"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div00_00.form.Tab00.Tabpage1.form.Edit00" propid="value" datasetid="ds_socialIns" columnid="HEALTH_INSURE_RATES"/>
+      <BindItem id="item1" compid="Div00_00.form.Tab00.Tabpage1.form.Edit00_00" propid="value" datasetid="ds_socialIns" columnid="LONG_TERM_CARE_RATE"/>
+      <BindItem id="item2" compid="Div00_00.form.Tab00.Tabpage2.form.Edit00" propid="value" datasetid="ds_socialIns" columnid="NATION_PENISION_RATES"/>
+      <BindItem id="item3" compid="Div00_00.form.Tab00.Tabpage2.form.Edit00_00" propid="value" datasetid="ds_socialIns" columnid="NATION_PENISION_RATES"/>
+      <BindItem id="item4" compid="Div00_00.form.Tab00.Tabpage3.form.Edit00_01" propid="value" datasetid="ds_socialIns" columnid="EMP_INSURE_RATES"/>
+      <BindItem id="item5" compid="Div00_00.form.Tab00.Tabpage3.form.Edit00_00_00" propid="value" datasetid="ds_socialIns" columnid="WRK_INSURE_RATES"/>
+      <BindItem id="item6" compid="Div00_00.form.Tab00.Tabpage3.form.Edit00" propid="value" datasetid="ds_socialIns" columnid="JOBSTABIL_RATES"/>
+      <BindItem id="item7" compid="Div00_00.form.Tab00.Tabpage3.form.Edit00_00" propid="value" datasetid="ds_socialIns" columnid="VOCA_COMPETENCY_RATES"/>
+      <BindItem id="item8" compid="Div00_00.form.Tab00.Tabpage4.form.Edit00" propid="value" datasetid="ds_socialIns" columnid="INDUST_INSURE_RATES"/>
+      <BindItem id="item9" compid="Div00_00.form.Tab00.Tabpage4.form.Edit00_00" propid="value" datasetid="ds_socialIns" columnid="INDUST_INSURE_CHAR_RATES"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[var year
+ 
+this.sociallns_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+
+	var currDate = new Date();
+    year = currDate.getFullYear().toString().padLeft(4, "0");
+	this.Div00_00.form.Div00.form.year.set_text(year);
+	this.transaction("getAppointmentInfolist",
+					 "svcSalarystdinfomgmt::social1",
+					 "",
+					 "ds_socialIns=gds_socialIns",
+					 "year="+year,
+					 "fn_callback");
+};
+
+this.Div00_00_Tab00_Tabpage3_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+		this.transaction("getAppointmentInfolist",
+					 "svcSalarystdinfomgmt::social2",
+					 "gds_socialIns=ds_socialIns",
+					 "",
+					 "",
+					 "fn_callback");	
+};
+
+this.Div00_00_Tab00_Tabpage4_Button00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+			this.transaction("getAppointmentInfolist",
+							"svcSalarystdinfomgmt::social3",
+							"",
+							"",
+							"year="+year,
+							"fn_callback");	
+};
+]]></Script>
+  </Form>
+</FDL>

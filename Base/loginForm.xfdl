@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="loginForm" width="400" height="500">
+    <Layouts>
+      <Layout height="500" mobileorientation="landscape" width="400">
+        <Div id="Div" taborder="0" text="Div00" left="0" top="0" right="0" bottom="0" background="url('Images::login.jpg')">
+          <Layouts>
+            <Layout>
+              <Static id="TITLE" taborder="0" text="INSA" left="72" top="74" width="256" height="94" font="normal 700 75pt/normal &quot;Broadway&quot;" textAlign="center" color="darkgray"/>
+              <Static id="ID" taborder="1" text="ID" left="50" top="271" width="83" height="38" textAlign="center" font="14pt/normal &quot;Bauhaus 93&quot;" color="darkgray"/>
+              <Static id="PW" taborder="2" text="PW" left="50" top="342" width="83" height="38" textAlign="center" font="14pt/normal &quot;Bauhaus 93&quot;" color="darkgray"/>
+              <Edit id="empName" taborder="3" left="163" top="271" width="178" height="38" textAlign="center" borderRadius="18px 18px 0px"/>
+              <Edit id="empCode" taborder="4" left="163" top="342" width="178" height="38" textAlign="center" borderRadius="18px 18px 0px" password="true" imemode="none"/>
+              <Button id="loginBtn" taborder="5" text="LOGIN" left="111" top="418" width="86" height="30" font="normal 10pt/normal &quot;Bauhaus 93&quot;" boxShadow="4px 4px 10px gray" borderRadius="18px 18px 0px" onclick="Div_loginBtn_onclick"/>
+              <Button id="logoutBtn" taborder="6" text="LOGOUT" left="231" top="418" width="86" height="30" font="normal 10pt/normal &quot;Bauhaus 93&quot;" borderRadius="18px 18px 0px" boxShadow="4px 4px 10px gray" onclick="Div_logoutBtn_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+nexa = nexacro.getApplication();
+
+this.Div_loginBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var empName = this.Div.form.empName.text;
+	var empCode = this.Div.form.empCode.text;
+	this.transaction(
+					"empLogin"
+					,"svcSystemmgmt::login"
+					,""
+					,"gds_emp=gds_emp"
+					,"empName=이소명 empCode=A490080"
+					,"login_callback"
+	);	
+};
+
+
+this.login_callback = function (trID, errorCode, errorMsg)
+{
+
+	if(errorCode < 0){
+		return this.alert("로그인 실패 : "+ errorMsg );
+	}
+	
+		trace("@@@@"+nexacro.getApplication().mainframe);
+		
+		//alert("오프너"+this.opener);
+		nexa.g_empName	= nexa.gds_emp.getColumn(0,"EMP_NAME"); //사원명
+ 		nexa.g_empCode	= nexa.gds_emp.getColumn(0,"EMP_CODE"); //사원코드
+		nexa.g_deptName	= nexa.gds_emp.getColumn(0,"DEPT_NAME");  //부서
+		nexa.g_position	= nexa.gds_emp.getColumn(0,"POSITION"); //직급
+		
+		nexa.mainframe.set_visible(true);
+		
+		this.close();
+};]]></Script>
+    <Objects>
+      <Dataset id="loginForm">
+        <ColumnInfo>
+          <Column id="MENU_ID" type="STRING" size="256"/>
+          <Column id="MENU_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

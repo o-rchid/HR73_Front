@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="baseSalMgt" width="1060" height="610" titletext="New Form" onload="baseSalMgt_onload">
+    <Layouts>
+      <Layout height="610" width="1060">
+        <Div id="Div00_00" taborder="0" text="" left="25" top="25" width="1010" height="560" background="#D9E5FF">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="1" text="◼급여기준관리" left="8" top="0" width="214" height="49" textAlign="left" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Grid id="Grid00" taborder="1" left="203" top="155" width="605" height="370" binddataset="ds_basesalary" autoenter="none">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="151"/>
+                      <Column size="151"/>
+                      <Column size="151"/>
+                      <Column size="151"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="24" band="head"/>
+                      <Row size="24"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="직책코드"/>
+                      <Cell col="1" text="직책"/>
+                      <Cell col="2" text="기본급"/>
+                      <Cell col="3" text="호봉인상률"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:POSITION_CODE" edittype="text"/>
+                      <Cell col="1" text="bind:POSITION" edittype="text"/>
+                      <Cell col="2" text="bind:BASE_SALARY" edittype="text"/>
+                      <Cell col="3" text="bind:HOBONG_RATIO" edittype="text"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="Button00" taborder="2" text="변경확정" left="390" top="75" width="230" height="60" font="24px/normal &quot;나눔고딕&quot;" onclick="Div00_00_btn_save_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_basesalary">
+        <ColumnInfo>
+          <Column id="POSITION_CODE" type="STRING" size="256"/>
+          <Column id="POSITION" type="STRING" size="256"/>
+          <Column id="BASE_SALARY" type="STRING" size="256"/>
+          <Column id="HOBONG_RATIO" type="STRING" size="256"/>
+          <Column id="ALLOWANCE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[//로딩시
+this.baseSalMgt_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+this.transaction(
+             "baseSalMgtID",
+             "svcSalarystdinfomgmt::base-salary1",
+             "",
+             "ds_basesalary=gds_basesalary", 
+             "",
+             "fn_callback");   
+      
+};
+
+//저장
+this.Div00_00_btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   var count=this.ds_basesalary.rowcount;
+   
+   for(var i=0;i<count;i++){
+      var positioncode=this.ds_basesalary.getColumn(i,"POSITION_CODE");
+      var position=this.ds_basesalary.getColumn(i,"POSITION");
+      var basesalary=this.ds_basesalary.getColumn(i,"BASE_SALARY");
+      var hobong=this.ds_basesalary.getColumn(i,"HOBONG_RATIO");
+
+      
+   if (positioncode==null){
+      this.alert("직급코드를 입력해주세요."); return;   
+   }if (position==null){
+      this.alert("직급를 입력해주세요"); return;
+       }
+      if (basesalary==null){
+      this.alert("기본급을 입력해주세요."); return;
+       }
+      if (hobong==null){
+      this.alert("호봉인상율을 입력해주세요."); return;
+       }
+   }if(confirm(" 저장하시겠습니까 ? ")){
+   this.transaction(
+               "updateID",
+                "svcSalarystdinfomgmt::base-salary2",
+                "gds_basesalary=ds_basesalary:u",
+                "",
+                "",
+                "fn_callback");   
+   }
+};
+
+this.fn_callback = function (trID , ErrorCode , ErrorMsg)
+{
+   if(trID=="positionListID"){
+      if (ErrorCode!=0){
+         alert("조회실패 : "+ErrorMsg);   
+      }else{
+      
+         var count=this.ds_positionList.rowcount;
+         
+         for(var i=0;i<count;i++){
+            var statusList=this.ds_positionList.setColumn(i,"STATUS","");
+         }
+      }
+   }
+   if(trID=="updateID"){
+      if (ErrorCode!=0){
+         alert("저장실패 : "+ErrorMsg+ErrorCode);   
+      }else{
+         alert("저장완료 ");   
+      }this.reload();
+   }
+};]]></Script>
+  </Form>
+</FDL>

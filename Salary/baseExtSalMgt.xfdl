@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="baseExtSalMgt" width="1060" height="610" titletext="New Form" onload="baseExtSalMgt_onload">
+    <Layouts>
+      <Layout height="610" width="1060">
+        <Div id="Div00_00" taborder="0" text="" left="25" top="25" width="1010" height="560" background="#D9E5FF">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="1" text=" ◼초과수당관리" left="8" top="0" width="214" height="49" textAlign="left" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Grid id="Grid00" taborder="1" left="203" top="145" width="605" height="380" binddataset="ds_baseExtSalMgt">
+                <Formats>
+                  <Format id="default">
+                    <Columns>
+                      <Column size="200"/>
+                      <Column size="200"/>
+                      <Column size="200"/>
+                    </Columns>
+                    <Rows>
+                      <Row size="32" band="head"/>
+                      <Row size="32"/>
+                    </Rows>
+                    <Band id="head">
+                      <Cell text="초과수당코드" font="20px/normal &quot;나눔고딕&quot;"/>
+                      <Cell col="1" text="초과수당명" font="20px/normal &quot;나눔고딕&quot;"/>
+                      <Cell col="2" text="배율" font="20px/normal &quot;나눔고딕&quot;"/>
+                    </Band>
+                    <Band id="body">
+                      <Cell text="bind:EXT_SAL_CODE" font="18px/normal &quot;나눔고딕&quot;" textAlign="center" edittype="text"/>
+                      <Cell col="1" text="bind:EXT_SAL_NAME" font="18px/normal &quot;나눔고딕&quot;" textAlign="center" edittype="text"/>
+                      <Cell col="2" text="bind:RATIO" font="18px/normal &quot;나눔고딕&quot;" textAlign="center" edittype="text"/>
+                    </Band>
+                  </Format>
+                </Formats>
+              </Grid>
+              <Button id="Button00" taborder="2" text="변경확정" left="380" top="75" width="230" height="60" font="24px/normal &quot;나눔고딕&quot;" onclick="Div00_00_Button00_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[//로드
+this.baseExtSalMgt_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.transaction("overtimeAllowanceID",
+					 "svcSalarystdinfomgmt::over-sal",
+					 "",
+					 "ds_baseExtSalMgt=ds_baseExtSal",
+					 "",
+					 "");
+}
+
+//변경확정
+this.Div00_00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.transaction("overtimeAllowanceCreateID",
+					 "svcSalarystdinfomgmt::over-sal-create",
+					 "ds_baseExtSal=ds_baseExtSalMgt",
+					 "",
+					 "",
+					 "fn_callback");
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_baseExtSalMgt">
+        <ColumnInfo>
+          <Column id="EXT_SAL_CODE" type="STRING" size="256"/>
+          <Column id="EXT_SAL_NAME" type="STRING" size="256"/>
+          <Column id="RATIO" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

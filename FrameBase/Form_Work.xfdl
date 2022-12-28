@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Work" width="1300" height="600" titletext="Form_Work" onload="Form_Work_onload">
+    <Layouts>
+      <Layout width="1300" height="600" screenid="Desktop_screen">
+        <Div id="Div00" taborder="0" left="0" top="8" width="1300" height="600" onclick="Div00_onclick" text="">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_scMenu">
+        <ColumnInfo>
+          <Column id="MENU_ID" type="STRING" size="256"/>
+          <Column id="MENU_STATUS" type="STRING" size="256"/>
+          <Column id="DEPT_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="TITLE" compid="Div00" propid="text" datasetid="gds_api" columnid="1"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="empReg" width="1060" height="610" titletext="New Form">
+    <Layouts>
+      <Layout height="610" mobileorientation="landscape" width="1060">
+        <Div id="Div" taborder="1" text="" left="20" top="-5" width="1060" height="605" background="#D9E5FF">
+          <Layouts>
+            <Layout>
+              <ImageViewer id="ImageViewer" taborder="24" left="59" top="55" width="200" height="222" onclick="Div_ImageViewer_onclick"/>
+              <Button id="imageBtn" taborder="25" text="사진찾기" left="277" top="55" width="160" height="57" font="18px/normal &quot;나눔고딕&quot;" onclick="imageBtn_onclick"/>
+              <Button id="registBtn" taborder="26" text="등록" left="277" top="137" width="160" height="57" font="18px/normal &quot;나눔고딕&quot;" onclick="Div_registBtn_onclick"/>
+              <Button id="cancelBtn" taborder="27" text="취소" left="277" top="219" width="160" height="57" font="18px/normal &quot;나눔고딕&quot;" onclick="Div_cancelBtn_onclick"/>
+              <Static id="empName" taborder="5" text="이름" left="37" top="299" width="109" height="51" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Edit id="empNameEdit" taborder="0" left="154" top="295" width="283" height="53" font="18px/normal &quot;나눔고딕&quot;" onchanged="Div_empNameEdit_onchanged"/>
+              <Static id="address" taborder="6" text="주소" left="37" top="360" width="109" height="51" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Edit id="addressEdit" taborder="1" left="156" top="358" width="283" height="53" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Static id="detailedAddress" taborder="8" text="상세주소" left="37" top="421" width="109" height="51" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Edit id="detailedAddressEdit" taborder="2" left="156" top="421" width="283" height="53" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Static id="PostalCode" taborder="9" text="우편번호" left="37" top="482" width="109" height="51" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Edit id="PostalCodeEdit" taborder="3" left="156" top="484" width="283" height="53" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Static id="PhoneNumber" taborder="10" text="전화번호" left="37" top="543" width="109" height="51" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <MaskEdit id="PhoneNumberEdit" taborder="7" left="156" top="545" width="283" height="53" format="###-####-####" textAlign="center" font="18px/normal &quot;나눔고딕&quot;" type="string"/>
+              <Static id="empNumber" taborder="21" text="사원번호" left="459" top="28" width="108" height="50" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Edit id="empNumberEdit" taborder="22" left="564" top="25" width="202" height="50" font="18px/normal &quot;나눔고딕&quot;" readonly="true"/>
+              <Button id="empNumberBtn" taborder="23" text="사원번호생성" left="773" top="25" width="196" height="50" font="18px/normal &quot;나눔고딕&quot;" onclick="Div_empNumberBtn_onclick"/>
+              <Static id="email" taborder="12" text="이메일" left="456" top="86" width="109" height="50" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Edit id="emailEdit" taborder="11" left="564" top="83" width="406" height="50" font="18pt &quot;나눔고딕&quot;"/>
+              <Static id="position" taborder="13" text="직급" left="456" top="144" width="109" height="50" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Edit id="positionEdit" taborder="28" left="564" top="141" width="406" height="50" oneditclick="positionEdit_oneditclick" font="18pt &quot;나눔고딕&quot;" onchanged="Div_positionEdit_onchanged"/>
+              <Static id="gender" taborder="14" text="성별" left="458" top="202" width="109" height="50" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Edit id="genderEdit" taborder="29" left="564" top="199" width="406" height="50" oneditclick="genderEdit_oneditclick" font="18pt &quot;나눔고딕&quot;"/>
+              <Static id="finalAcademic" taborder="15" text="최종학력" left="458" top="260" width="109" height="50" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Edit id="finalAcademicEdit" taborder="30" left="564" top="257" width="406" height="50" oneditclick="finalAcademicEdit_oneditclick" font="18pt &quot;나눔고딕&quot;"/>
+              <Static id="hobong" taborder="16" text="호봉" left="460" top="318" width="109" height="50" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Edit id="hobongEdit" taborder="31" left="564" top="315" width="406" height="50" oneditclick="hobongEdit_oneditclick" font="18pt &quot;나눔고딕&quot;"/>
+              <Static id="workType" taborder="17" text="근무형태" left="458" top="376" width="109" height="50" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Edit id="workTypeEdit" taborder="32" left="564" top="373" width="406" height="50" oneditclick="workTypeEdit_oneditclick" font="18pt &quot;나눔고딕&quot;"/>
+              <Static id="employmentType" taborder="18" text="고용형태" left="458" top="434" width="109" height="50" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Edit id="employmentTypeEdit" taborder="33" left="564" top="431" width="406" height="50" oneditclick="employmentTypeEdit_oneditclick" font="18pt &quot;나눔고딕&quot;"/>
+              <Static id="dept" taborder="19" text="부서" left="458" top="492" width="109" height="50" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Edit id="deptEdit" taborder="34" left="564" top="489" width="406" height="50" oneditclick="deptEdit_oneditclick" font="18pt &quot;나눔고딕&quot;"/>
+              <Static id="birth" taborder="20" text="생년월일" left="458" top="550" width="109" height="50" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+              <Calendar id="birthCal" taborder="4" left="564" top="547" width="406" height="50" font="18pt &quot;나눔고딕&quot;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="title" taborder="1" text="    사원등록" left="0" top="6" width="188" height="49" textAlign="center" font="18px/normal &quot;나눔고딕&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <FileDialog id="FileDialog" onclose="FileDialog_onclose"/>
+      <Dataset id="ds_empReg">
+        <ColumnInfo>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="ADDRESS" type="STRING" size="256"/>
+          <Column id="DETAIL_ADDRESS" type="STRING" size="256"/>
+          <Column id="POST_NUMBER" type="STRING" size="256"/>
+          <Column id="MOBILE_NUMBER" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMAIL" type="STRING" size="256"/>
+          <Column id="POSITION" type="STRING" size="256"/>
+          <Column id="GENDER" type="STRING" size="256"/>
+          <Column id="LAST_SCHOOL" type="STRING" size="256"/>
+          <Column id="HOBONG" type="STRING" size="256"/>
+          <Column id="OCCUPATION" type="STRING" size="256"/>
+          <Column id="EMPLOYMENT" type="STRING" size="256"/>
+          <Column id="DEPT_NAME" type="STRING" size="256"/>
+          <Column id="BIRTHDATE" type="STRING" size="256"/>
+          <Column id="IMG_EXTEND" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_img">
+        <ColumnInfo>
+          <Column id="EMP_FILE_NAME" type="STRING" size="256"/>
+          <Column id="IMG_FILE_DATA" type="BLOB" size="999"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[include "Lib::commonOpen.xjs";
+
+//=========================== 모달창 ===============================
+var updateEdit;
+var modalUrl = "Base::Modal.xfdl";
+var modalEvent = "fn_popupCallback";
+this.genderEdit_oneditclick = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	updateEdit = obj;
+	this.gfnOpen("gender", modalUrl, modalEvent, {code:"CO-01"});
+}
+
+this.finalAcademicEdit_oneditclick = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	updateEdit = obj;
+	this.gfnOpen("lastSchool", modalUrl, modalEvent, {code:"CO-02"});
+}
+
+this.workTypeEdit_oneditclick = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	updateEdit = obj;
+	this.gfnOpen("occupation", modalUrl, modalEvent, {code:"CO-03"});
+}
+
+this.positionEdit_oneditclick = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	updateEdit = obj;
+	this.gfnOpen("position", modalUrl, modalEvent, {code:"CO-04"});
+}
+
+this.employmentTypeEdit_oneditclick = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	updateEdit = obj;
+	this.gfnOpen("employment", modalUrl, modalEvent, {code:"CO-05"});
+}
+
+this.deptEdit_oneditclick = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	updateEdit = obj;
+	this.gfnOpen("dept", modalUrl, modalEvent, {code:"CO-07"});
+};
+
+this.hobongEdit_oneditclick = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	updateEdit = obj;
+	this.gfnOpen("hobong", modalUrl, modalEvent, {code:"CO-12"});
+};
+
+this.fn_popupCallback = function(codename, code)
+{
+	trace(code);
+	updateEdit.set_value(code.split(" ")[0]);
+}
+//=====================================================================
+
+
+//사원번호 생성
+this.Div_empNumberBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.transaction(
+               "generateEmpNo"
+               ,"svcEmpinfomgmt::employee"
+               ,""
+               ,"ds_empReg=gds_emp"
+               ,""
+               ,"fn_TrCallback"
+   );
+};
+
+this.fn_TrCallback =function(trID ,ErrorCode ,ErrorMsg)
+{
+if(trID=="generateEmpNo"){
+      if(ErrorCode!=0){
+         alert("사원번호 생성 실패 : "+ErrorMsg);
+      }else{ //성공시
+      this.Div.form.empNumberEdit.set_value(this.ds_empReg.getColumn(0,"EMP_CODE"));
+         alert(" 사원번호가 생성되었습니다. ");
+      }
+   }
+
+if(trID=="empInsertID"){
+      if(ErrorCode!=0){
+         alert("사원등록 실패 : "+ErrorMsg);
+      }else{ //성공시
+         alert("    사원등록 완료.     ");
+         this.reload();
+      }
+   }
+}
+
+//등록
+
+this.Div_registBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	
+	 if(this.Div.form.empNumberEdit.value==null){alert("사원번호를 입력해주세요."); return;
+	}if(this.Div.form.empNameEdit.value==null){alert("이름을 입력해주세요."); return;
+	}if(this.Div.form.addressEdit.value==null){alert("주소를 입력해주세요."); return;
+	}if(this.Div.form.detailedAddressEdit.value==null){alert("상세주소를 입력해주세요."); return;
+	}if(this.Div.form.PostalCodeEdit.value==null){alert("우편번호를 입력해주세요."); return;
+	}if(this.Div.form.PhoneNumberEdit.value==null){alert("전화번호를 정확히 입력해주세요."); return;
+	}if(this.Div.form.emailEdit.value==null){alert("이메일을 입력해주세요."); return;
+	}if(this.Div.form.positionEdit.value==null){alert("직급을 선택해주세요."); return;
+	}if(this.Div.form.genderEdit.value==null){alert("성별을 선택해주세요."); return;
+	}if(this.Div.form.finalAcademicEdit.value==null){alert("최종학력을 선택해주세요."); return;
+	}if(this.Div.form.hobongEdit.value==null){alert("호봉을 선택해주세요."); return;
+	}if(this.Div.form.workTypeEdit.value==null){alert("근무형태를 선택해주세요."); return;
+	}if(this.Div.form.employmentTypeEdit.value==null){alert("고용형태를 선택해주세요."); return;
+	}if(this.Div.form.deptEdit.value==null){alert("부서를 선택해주세요."); return;
+	}if(this.Div.form.birthCal.value==null){alert("생일을 입력해주세요."); return;
+}else{
+	this.ds_empReg.setColumn(0,"EMP_NAME",this.Div.form.empNameEdit.value);
+	this.ds_empReg.setColumn(0,"ADDRESS",this.Div.form.addressEdit.value);
+	this.ds_empReg.setColumn(0,"DETAIL_ADDRESS",this.Div.form.detailedAddressEdit.value);
+	this.ds_empReg.setColumn(0,"POST_NUMBER",this.Div.form.PostalCodeEdit.value);
+	this.ds_empReg.setColumn(0,"MOBILE_NUMBER",this.Div.form.PhoneNumberEdit.value);
+	this.ds_empReg.setColumn(0,"EMP_CODE",this.Div.form.empNumberEdit.value);
+	this.ds_empReg.setColumn(0,"EMAIL",this.Div.form.emailEdit.value);
+	this.ds_empReg.setColumn(0,"POSITION",this.Div.form.positionEdit.value);
+	this.ds_empReg.setColumn(0,"GENDER",this.Div.form.genderEdit.value);
+	this.ds_empReg.setColumn(0,"LAST_SCHOOL",this.Div.form.finalAcademicEdit.value);
+	this.ds_empReg.setColumn(0,"HOBONG",this.Div.form.hobongEdit.value);
+	this.ds_empReg.setColumn(0,"OCCUPATION",this.Div.form.workTypeEdit.value);
+	this.ds_empReg.setColumn(0,"EMPLOYMENT",this.Div.form.employmentTypeEdit.value);
+	this.ds_empReg.setColumn(0,"DEPT_NAME",this.Div.form.deptEdit.value);
+	this.ds_empReg.setColumn(0,"BIRTHDATE",this.Div.form.birthCal.value);
+	this.ds_empReg.setColumn(0,"IMG_EXTEND","jpg");
+	
+	this.transaction("empInsertID",
+					 "svcEmpinfomgmt::employee",
+					 "gds_emp=ds_empReg",//서<-클
+					 "",//클<-서
+					 "",
+					 "fn_TrCallback");
+	}
+};
+
+//취소
+this.Div_cancelBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.reload();
+};
+
+//============================== 이미지 ====================================
+
+var vFile;
+var empFilename;
+
+this.imageBtn_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.ds_empReg.getColumn(this.ds_empReg.rowposition,"EMP_CODE")==undefined){
+		alert(" 사원번호를 먼저 생성해주세요. ");
+		return;
+	}else{
+		this.FileDialog.open( "FileOpen", FileDialog.LOAD );
+	}
+};
+
+//파일다이얼로그 꺼질때 이벤트
+this.FileDialog_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+		vFile = e.virtualfiles[0];
+
+		vFile.addEventHandler("onsuccess", this.FileList_onsuccess, this);
+		vFile.addEventHandler("onerror", this.FileList_onerror, this);
+		vFile.open(vFile.fullpath, VirtualFile.openBinary);
+
+		empFileName = vFile.filename;
+		
+		var realPath = system.convertRealPath(vFile.fullpath);
+		this.Div.form.ImageViewer.set_image("file://"+realPath);
+		this.Div.form.ImageViewer.set_stretch("fit");
+};
+
+]]></Script>
+  </Form>
+</FDL>

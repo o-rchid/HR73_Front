@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Left" width="200" height="850" titletext="Form_Left">
+    <Layouts>
+      <Layout width="200" height="850" screenid="Desktop_screen">
+        <Div id="Div00" taborder="0" text="Div00" left="0" top="0" width="195" height="170">
+          <Layouts>
+            <Layout>
+              <Static id="Static00_00" taborder="1" text="사원코드" left="10" top="72" width="54" height="32" font="bold 12px/normal &quot;Gulim&quot;,&quot;휴먼엑스포&quot;" textAlign="center"/>
+              <Static id="Static00_00_00" taborder="1" text="성 명" left="10" top="20" width="54" height="32" font="bold 12px/normal &quot;Gulim&quot;,&quot;휴먼엑스포&quot;" textAlign="center"/>
+              <Static id="Static00_00_01" taborder="2" text="직 급" left="10" top="124" width="54" height="32" font="bold 12px/normal &quot;Gulim&quot;,&quot;휴먼엑스포&quot;" textAlign="center"/>
+              <Edit id="empName" taborder="3" left="84" top="20" width="95" height="32" font="bold 12px/normal &quot;Gulim&quot;,&quot;휴먼엑스포&quot;" textAlign="center" enable="false"/>
+              <Edit id="empCode" taborder="4" left="83" top="72" width="95" height="32" font="bold 12px/normal &quot;Gulim&quot;,&quot;휴먼엑스포&quot;" textAlign="center" onchanged="Div00_Edit00_00_onchanged" enable="false"/>
+              <Edit id="empPosition" taborder="5" left="83" top="124" width="95" height="32" font="bold 12px/normal &quot;Gulim&quot;,&quot;휴먼엑스포&quot;" textAlign="center" enable="false"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="leftMenu" taborder="1" left="0" top="170" width="200" height="900" binddataset="gds_menu" autosizingtype="col" cellmovingtype="none" treeinitstatus="expand,all" treeusecheckbox="false" oncelldblclick="leftMenu_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="96"/>
+              </Columns>
+              <Rows>
+                <Row size="24"/>
+              </Rows>
+              <Band id="body">
+                <Cell displaytype="treeitemcontrol" edittype="tree" text="bind:menu_nm" treelevel="bind:menu_lv" treestate="bind:menu_st"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.empName" propid="value" datasetid="gds_emp" columnid="EMP_NAME"/>
+      <BindItem id="item1" compid="Div00.form.empCode" propid="value" datasetid="gds_emp" columnid="EMP_CODE"/>
+      <BindItem id="item2" compid="Div00.form.empPosition" propid="value" datasetid="gds_emp" columnid="POSITION"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[
+var nexa = nexacro.getApplication();
+
+this.leftMenu_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var sID = nexa.gds_menu.getColumn(e.row, "menu_id");
+	var url = nexa.gds_menu.getColumn(e.row, "menu_url");
+	var title = nexa.gds_menu.getColumn(e.row, "menu_nm");
+	var sIDN=parseInt(sID);
+	
+
+	if( url == null) return;
+
+	this.gfn_Open(url, title);
+};
+
+this.gfn_Open = function (url, title)
+ {
+	var dd = nexa.mainframe.VFrameSet00.HFrameSet00.WorkFrame;
+
+        //dd.form.Div00.set_text(title);
+		
+        dd.form.Div00.set_url(url);
+            
+ };
+]]></Script>
+    <Objects>
+      <Dataset id="Dataset00"/>
+    </Objects>
+  </Form>
+</FDL>
